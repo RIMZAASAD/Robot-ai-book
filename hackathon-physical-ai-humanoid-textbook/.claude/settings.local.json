@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tasklist)",
+      "Bash(findstr -i \"node\\|python\")",
+      "Bash(findstr -v grep)",
+      "Bash(python test_chat_embedding.py)"
+    ]
+  },
+  "outputStyle": "Explanatory"
+}

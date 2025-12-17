@@ -1,0 +1,30 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #8A2BE2;          /* Purple */
+  --ifm-color-primary-dark: #7A1BD2;     /* Darker Purple */
+  --ifm-color-primary-darker: #6B1AC2;   /* Even Darker Purple */
+  --ifm-color-primary-darkest: #5B15A2;  /* Darkest Purple */
+  --ifm-color-primary-light: #9A3CE2;    /* Lighter Purple */
+  --ifm-color-primary-lighter: #AA4DE2;  /* Even Lighter Purple */
+  --ifm-color-primary-lightest: #BA6DE2; /* Lightest Purple */
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(138, 43, 226, 0.1); /* Purple tinted */
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #BA6DE2;          /* Light Purple */
+  --ifm-color-primary-dark: #AA4DE2;     /* Medium Purple */
+  --ifm-color-primary-darker: #9A3CE2;   /* Slightly Darker Purple */
+  --ifm-color-primary-darkest: #8A2BE2;  /* Purple */
+  --ifm-color-primary-light: #CA8EE2;    /* Lighter Purple */
+  --ifm-color-primary-lighter: #DAAFE2;  /* Even Lighter Purple */
+  --ifm-color-primary-lightest: #EACFE2; /* Lightest Purple */
+  --docusaurus-highlighted-code-line-bg: rgba(138, 43, 226, 0.3); /* Purple tinted */
+}
