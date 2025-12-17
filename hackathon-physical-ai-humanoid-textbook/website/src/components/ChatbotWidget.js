@@ -70,6 +70,9 @@ const ChatbotWidget = () => {
         ? 'http://localhost:8000/v1/chat-selected'
         : 'http://localhost:8000/v1/chat';
 
+      // Get current page context only in browser environment
+      const pageContext = ExecutionEnvironment.canUseDOM ? window.location.pathname : '';
+
       const requestBody = isSelectingMode && selectedText
         ? {
             question: inputValue,
@@ -79,7 +82,7 @@ const ChatbotWidget = () => {
         : {
             question: inputValue,
             session_id: 'docusaurus-session-' + Date.now(),
-            page_context: window.location.pathname
+            page_context: pageContext
           };
 
       const response = await fetch(endpoint, {
