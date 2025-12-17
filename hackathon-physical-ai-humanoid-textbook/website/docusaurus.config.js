@@ -20,10 +20,10 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://RIMZAASAD.github.io',
+  url: 'https://robotic-ai-book-kappa.vercel.app', // Updated for Vercel deployment
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is '/<projectName>/'
-  baseUrl: '/Robotic-ai-Book/',
+  // For Vercel deployment, use "/"
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

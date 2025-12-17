@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "cd website && npm install && npm run build",
+    "start": "cd website && npm run serve"
+  },
+  "engines": {
+    "node": ">=20.0"
+  }
+}
