@@ -14,5 +14,8 @@
       "src": "/(.*)",
       "dest": "/website/build/$1"
     }
-  ]
+  ],
+  "github": {
+    "silent": true
+  }
 }
