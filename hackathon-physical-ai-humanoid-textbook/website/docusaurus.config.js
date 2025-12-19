@@ -28,7 +28,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'RIMZAASAD', // Usually your GitHub org/user name.
-  projectName: 'Robotic-ai-Book', // Usually your repo name.
+  projectName: 'Robot-ai-book', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -49,7 +49,7 @@ const config = {
           sidebarPath: './sidebars.js',
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/RIMZAASAD/Robotic-ai-Book/edit/main/website/',
+            'https://github.com/RIMZAASAD/Robot-ai-book/edit/main/website/',
         },
         blog: {
           showReadingTime: true,

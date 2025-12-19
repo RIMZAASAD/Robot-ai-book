@@ -1,21 +1,24 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "website/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "website/build"
+        "distDir": "build"
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/website/build/$1"
+      "dest": "/$1",
+      "status": 200
+    },
+    {
+      "src": "/[^.]+",
+      "dest": "/index.html",
+      "status": 200
     }
   ],
-  "github": {
-    "silent": true
-  }
+  "outputDirectory": "website/build"
 }
