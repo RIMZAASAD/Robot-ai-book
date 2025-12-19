@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "website/**/*",
+      "src": "website/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "build"
@@ -11,14 +11,11 @@
   ],
   "routes": [
     {
+      "handle": "filesystem"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html",
-      "headers": {
-        "cache-control": "public, max-age=31536000"
-      }
+      "dest": "/index.html"
     }
-  ],
-  "github": {
-    "enabled": true
-  }
+  ]
 }
