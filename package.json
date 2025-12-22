@@ -1,0 +1,21 @@
+{
+  "name": "physical-ai-humanoid-textbook",
+  "version": "1.0.0",
+  "description": "Physical AI & Humanoid Robotics Textbook",
+  "scripts": {
+    "dev": "cd website && npm run dev",
+    "build": "cd website && npm run build",
+    "start": "cd website && npm run serve",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "docusaurus",
+    "documentation",
+    "physical-ai",
+    "humanoid-robotics"
+  ],
+  "author": "Rimza",
+  "license": "MIT"
+}

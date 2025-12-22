@@ -1,0 +1,95 @@
+# Dependencies
+/node_modules
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+env.bak/
+venv.bak/
+.ENV
+
+# Virtual Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Local development
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+nox/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Docusaurus
+.docusaurus
+.cache-loader
+.cache/
+
+# Database
+*.db
+*.db-journal
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Environment variables (important for security)
+.env
+
+# Textbook content if it's large
+textbook/
+
+# Special Windows files
+nul
+
+# Backend specific
+backend/__pycache__/
+backend/*.pyc
+backend/src/__pycache__/
+backend/src/*/__pycache__/
+
+# Node specific
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+npm-shrinkwrap.json
