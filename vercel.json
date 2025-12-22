@@ -1,17 +1,6 @@
 {
-  "builds": [
-    {
-      "src": "website/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/website/build/$1"
-    }
-  ]
+  "buildCommand": "npm run build",
+  "outputDirectory": "website/build",
+  "framework": "docusaurus-2",
+  "installCommand": "npm run install-all"
 }
