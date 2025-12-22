@@ -395,3 +395,74 @@ h2 {
     font-size: 1rem;
   }
 }
+
+/* ============================================
+   LUNR SEARCH UI BEAUTIFICATION
+   ============================================ */
+.navbar__search {
+  margin-left: 1rem;
+}
+
+/* Search Modal / Dropdown */
+.algolia-autocomplete .ds-dropdown-menu,
+[class*='search-result-container'] {
+  background: var(--glass-bg) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 1.5rem !important;
+  box-shadow: var(--shadow-xl) !important;
+  overflow: hidden !important;
+}
+
+/* Individual Result Item */
+.algolia-autocomplete .algolia-docsearch-suggestion,
+[class*='search-result-item'] {
+  background: transparent !important;
+  transition: all var(--transition-base) !important;
+  padding: 0.75rem 1rem !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--content:hover,
+[class*='search-result-item']:hover {
+  background: rgba(99, 102, 241, 0.1) !important;
+  transform: translateX(5px);
+}
+
+/* Highlighting Search Terms */
+.algolia-docsearch-suggestion--highlight,
+.search-result-match {
+  background: var(--gradient-primary) !important;
+  color: white !important;
+  padding: 0 4px !important;
+  border-radius: 4px !important;
+  font-weight: 700 !important;
+}
+
+/* Search Input Bar */
+.navbar__search-input {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 2rem !important;
+  padding: 0.5rem 1.5rem !important;
+  color: var(--ifm-color-primary-darker) !important;
+  transition: all var(--transition-base) !important;
+  width: 200px !important;
+}
+
+.navbar__search-input:focus {
+  width: 300px !important;
+  border-color: var(--ifm-color-primary) !important;
+  box-shadow: var(--shadow-glow) !important;
+}
+
+/* Section Headings in Search */
+.algolia-docsearch-suggestion--category-header {
+  background: var(--gradient-primary) !important;
+  color: white !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.1em !important;
+  padding: 0.5rem 1rem !important;
+}
