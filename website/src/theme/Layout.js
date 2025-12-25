@@ -3,8 +3,6 @@ import clsx from 'clsx';
 import { useLocation } from '@docusaurus/router';
 import { useKeyboardNavigation } from '@docusaurus/theme-common/internal';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import ChatbotWidget from '../components/ChatbotWidget';
-import '../components/ChatbotWidget.css'; // Import chatbot styles globally
 import LayoutProvider from '@theme/Layout/Provider';
 import Navbar from '@theme/Navbar';
 import Footer from '@theme/Footer';
@@ -26,8 +24,6 @@ function Layout(props) {
         </main>
         <Footer />
       </div>
-      {/* Add the chatbot widget to all pages */}
-      <ChatbotWidget />
     </LayoutProvider>
   );
 }
@@ -37,7 +33,7 @@ function LayoutWithErrorBoundary(props) {
   return (
     <ErrorBoundary
 
-    fallback={(errorProps) => <ErrorPageContent {...errorProps} />}
+      fallback={(errorProps) => <ErrorPageContent {...errorProps} />}
     >
       <Layout {...props} />
     </ErrorBoundary>
