@@ -8,7 +8,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://robotic-ai-book-kappa.vercel.app', // Vercel deployment URL
+  url: 'https://hackathon-physical-ai-humanoid-text-beta.vercel.app/', // Vercel deployment URL
   // Set the /<baseUrl>/ pathname under which your site is served
   // For Vercel, this is typically the root path
   baseUrl: '/',
