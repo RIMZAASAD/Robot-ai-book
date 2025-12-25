@@ -1,0 +1,211 @@
+openapi: 3.0.0
+info:
+  title: RAG Retrieval Validation API
+  description: API for validating RAG retrieval pipeline functionality
+  version: 1.0.0
+paths:
+  /v1/validation/run:
+    post:
+      summary: Run validation on the retrieval pipeline
+      description: Submit queries to validate the retrieval pipeline functionality
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                queries:
+                  type: array
+                  items:
+                    type: string
+                  description: List of queries to validate
+                  example: ["What is artificial intelligence?", "Explain machine learning"]
+                validation_name:
+                  type: string
+                  description: Name for the validation run
+                  example: "daily_validation_run"
+                top_k:
+                  type: integer
+                  description: Number of results to retrieve for each query
+                  default: 5
+                similarity_threshold:
+                  type: number
+                  description: Minimum similarity score for relevance
+                  default: 0.7
+              required:
+                - queries
+      responses:
+        '200':
+          description: Validation started successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  report_id:
+                    type: string
+                    description: Unique identifier for the validation report
+                  status:
+                    type: string
+                    description: Current status of the validation run
+                  total_queries:
+                    type: integer
+                    description: Number of queries being validated
+                example:
+                  report_id: "validation_report_123"
+                  status: "running"
+                  total_queries: 2
+        '400':
+          description: Invalid request parameters
+        '500':
+          description: Server error during validation
+  /v1/validation/report/{report_id}:
+    get:
+      summary: Get validation report
+      description: Retrieve the results of a validation run
+      parameters:
+        - name: report_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier for the validation report
+      responses:
+        '200':
+          description: Validation report retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  report_id:
+                    type: string
+                  validation_name:
+                    type: string
+                  status:
+                    type: string
+                    enum: [pending, running, completed, failed]
+                  metrics:
+                    type: object
+                    properties:
+                      total_queries:
+                        type: integer
+                      successful_retrievals:
+                        type: integer
+                      precision_score:
+                        type: number
+                        format: float
+                      average_latency:
+                        type: number
+                        format: float
+                      metadata_accuracy:
+                        type: number
+                        format: float
+                      determinism_score:
+                        type: number
+                        format: float
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        query:
+                          type: string
+                        retrieved_chunks:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              content:
+                                type: string
+                              source_url:
+                                type: string
+                              similarity_score:
+                                type: number
+                                format: float
+                              metadata_valid:
+                                type: boolean
+                              is_relevant:
+                                type: boolean
+                        validation_result:
+                          type: object
+                          properties:
+                            is_relevant:
+                              type: boolean
+                            relevance_score:
+                              type: number
+                              format: float
+                            metadata_valid:
+                              type: boolean
+                            semantic_similarity:
+                                type: number
+                                format: float
+                            retrieval_latency:
+                                type: number
+                                format: float
+                            deterministic:
+                                type: boolean
+                example:
+                  report_id: "validation_report_123"
+                  validation_name: "daily_validation_run"
+                  status: "completed"
+                  metrics:
+                    total_queries: 2
+                    successful_retrievals: 2
+                    precision_score: 0.85
+                    average_latency: 0.5
+                    metadata_accuracy: 1.0
+                    determinism_score: 0.95
+                  results:
+                    - query: "What is artificial intelligence?"
+                      retrieved_chunks:
+                        - content: "Artificial intelligence (AI) is intelligence demonstrated by machines..."
+                          source_url: "https://example.com/ai-intro"
+                          similarity_score: 0.89
+                          metadata_valid: true
+                          is_relevant: true
+                      validation_result:
+                        is_relevant: true
+                        relevance_score: 0.89
+                        metadata_valid: true
+                        semantic_similarity: 0.89
+                        retrieval_latency: 0.45
+                        deterministic: true
+        '404':
+          description: Validation report not found
+        '500':
+          description: Server error retrieving report
+  /v1/validation/health:
+    get:
+      summary: Health check for validation service
+      description: Check the health status of the validation service
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [healthy, unhealthy]
+                  timestamp:
+                    type: string
+                    format: date-time
+                  dependencies:
+                    type: object
+                    properties:
+                      qdrant:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                          collection_exists:
+                            type: boolean
+                      cohere:
+                        type: object
+                        properties:
+                          status:
+                            type: string
