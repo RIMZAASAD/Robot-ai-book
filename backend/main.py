@@ -200,6 +200,14 @@ async def ingest_urls(request: IngestionRequest):
 from src.api.v1.validation import router as validation_router
 app.include_router(validation_router)
 
+# Include agent API routes
+from src.api.v1.agent import router as agent_router
+app.include_router(agent_router)
+
+# Include chat API routes
+from src.api.v1.chat import router as chat_router
+app.include_router(chat_router)
+
 @app.get("/health")
 async def health_check():
     """Health check endpoint"""
