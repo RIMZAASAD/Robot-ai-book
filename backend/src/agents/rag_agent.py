@@ -25,18 +25,24 @@ class RAGAgent:
         # Initialize OpenAI client with OpenRouter if configured
         try:
             if settings.openrouter_api_key:
+                # Initialize OpenAI client for OpenRouter
                 self.openai_client = OpenAI(
-                    base_url=settings.openrouter_base_url,
                     api_key=settings.openrouter_api_key,
+                    base_url=settings.openrouter_base_url,
                 )
                 self.model = settings.openrouter_model
             else:
+                # Use default OpenAI client
                 self.openai_client = OpenAI()
                 self.model = agent_settings.agent_model
         except Exception as e:
             self.logger.error(f"Error initializing OpenAI client: {str(e)}")
-            # Fallback to a dummy client or raise an exception to handle gracefully
-            raise e
+            # Fallback to using the LLM service instead of direct OpenAI client
+            from ..services.llm_service import LLMService
+            self.llm_service = LLMService()
+            self.model = "llm_service_fallback"
+            self.openai_client = None
+            self.logger.info("Using LLM service fallback instead of OpenAI client")
 
         self.retrieval_service = RetrievalService()
         self.tool_registry = tool_registry
@@ -138,7 +144,7 @@ class RAGAgent:
         # Create a strict system prompt with guardrails
         prompt = f"""
         You are the "Physical AI & Humanoid Robotics Textbook" assistant.
-        
+
         STRICT GUARDRAILS:
         1. Only answer questions related to Physical AI, Robotics, ROS2, Computer Vision, or Humanoid systems.
         2. Use ONLY the provided context to answer technical questions.
@@ -156,16 +162,19 @@ class RAGAgent:
         """
 
         try:
-            response = self.openai_client.chat.completions.create(
-                model=self.model,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,  # Lower temperature for more grounded response
-                max_tokens=self.max_tokens
-            )
-
-            return response.choices[0].message.content.strip()
+            if self.openai_client:
+                response = self.openai_client.chat.completions.create(
+                    model=self.model,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.1,  # Lower temperature for more grounded response
+                    max_tokens=self.max_tokens
+                )
+                return response.choices[0].message.content.strip()
+            else:
+                # Use fallback LLM service
+                return await self.llm_service.generate_answer(query, [chunk.model_dump() for chunk in retrieved_chunks])
         except Exception as e:
-            self.logger.error(f"Error generating response with OpenAI: {str(e)}")
+            self.logger.error(f"Error generating response: {str(e)}")
             return f"I encountered an error while generating a response: {str(e)}"
 
     async def _generate_response_without_retrieval(self, query: str) -> str:
@@ -174,7 +183,7 @@ class RAGAgent:
         """
         prompt = f"""
         You are the "Physical AI & Humanoid Robotics Textbook" assistant.
-        
+
         STRICT GUARDRAILS:
         1. If the user query is a greeting (Hi, Hello), respond politely and mention you are here to help with Physical AI and Robotics.
         2. If the user query is NOT about Physical AI, Robotics, or related technical fields, politely refuse: "I am specialized only in Physical AI and Humanoid Robotics. I cannot answer questions outside of this domain."
@@ -186,14 +195,22 @@ class RAGAgent:
         """
 
         try:
-            response = self.openai_client.chat.completions.create(
-                model=self.model,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=self.temperature,
-                max_tokens=self.max_tokens
-            )
+            if self.openai_client:
+                response = self.openai_client.chat.completions.create(
+                    model=self.model,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=self.temperature,
+                    max_tokens=self.max_tokens
+                )
 
-            return response.choices[0].message.content.strip()
+                return response.choices[0].message.content.strip()
+            else:
+                # Use fallback - simple response for non-retrieval queries
+                query_lower = query.lower()
+                if any(greeting in query_lower for greeting in ["hello", "hi", "hey"]):
+                    return "Hello! I'm the Physical AI & Humanoid Robotics Textbook assistant. I'm here to help answer questions specifically about Physical AI, Robotics, ROS2, Computer Vision, and Humanoid systems. What can I help you with?"
+                else:
+                    return "I am specialized only in Physical AI and Humanoid Robotics. I cannot answer questions outside of this domain."
         except Exception as e:
             self.logger.error(f"Error generating response without retrieval: {str(e)}")
             return f"I encountered an error while generating a response: {str(e)}"

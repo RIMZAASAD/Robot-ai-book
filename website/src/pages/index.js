@@ -93,11 +93,6 @@ export default function Home() {
       <main>
         <ModulesSummary />
         <HomepageFeatures />
-        <div className="container">
-          <div style={{marginTop: '2rem', marginBottom: '2rem'}}>
-            <p style={{opacity: 0.85}}>Use the floating chat button at the bottom-right to ask questions about the textbook.</p>
-          </div>
-        </div>
       </main>
     </Layout>
   );
