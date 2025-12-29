@@ -17,7 +17,11 @@ const config = {
   projectName: 'Robotic-ai-Book', // Repo name (not used by Vercel)
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
   trailingSlash: false,
 
   i18n: {

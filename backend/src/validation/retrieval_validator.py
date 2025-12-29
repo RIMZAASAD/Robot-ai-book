@@ -90,7 +90,7 @@ class RetrievalValidator:
         )
 
         # Generate query embedding
-        query_embedding = await embedding_service.execute([query_text])
+        query_embedding = await embedding_service.execute([query_text], input_type="search_query")
         query_embedding = query_embedding[0]  # Get the first (and only) embedding
 
         # Search for similar chunks

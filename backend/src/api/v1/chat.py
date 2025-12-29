@@ -23,6 +23,11 @@ logger = logging.getLogger(__name__)
 rag_agent = RAGAgent()
 
 
+@router.options("/chat/query")
+async def options_query():
+    """Handle CORS preflight for chat query"""
+    return {"message": "OK"}
+
 @router.post("/chat/query", response_model=ChatResponse)
 async def submit_query(request: ChatRequest):
     """

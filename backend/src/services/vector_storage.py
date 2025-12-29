@@ -63,11 +63,13 @@ class VectorStorageService(BaseService):
         Search for similar vectors in Qdrant
         """
         try:
-            search_results = self.client.search(
+            # Use query_points instead of search for newer qdrant-client compatibility
+            query_response = self.client.query_points(
                 collection_name=self.collection_name,
-                query_vector=query_embedding,
+                query=query_embedding,
                 limit=limit
             )
+            search_results = query_response.points
 
             results = []
             for result in search_results:

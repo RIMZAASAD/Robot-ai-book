@@ -1,7 +1,4 @@
-try:
-    from pydantic_settings import BaseSettings
-except ImportError:
-    from pydantic import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import Optional
 
 
@@ -12,6 +9,12 @@ class Settings(BaseSettings):
     # Cohere Configuration
     cohere_api_key: str
     cohere_model: str = "embed-english-v3.0"
+    cohere_chat_model: str = "command-r7b-12-2024"
+    
+    # OpenRouter Configuration
+    openrouter_api_key: Optional[str] = None
+    openrouter_model: str = "mistralai/devstral-2512:free"
+    openrouter_base_url: str = "https://openrouter.ai/api/v1"
 
     # Qdrant Configuration
     qdrant_url: Optional[str] = None
@@ -34,9 +37,11 @@ class Settings(BaseSettings):
     # Collection name for Qdrant
     collection_name: str = "textbook_content"
 
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore"
+    )
 
 
 # Global settings instance

@@ -1,158 +1,201 @@
 /**
- * Modern, Premium Custom Styles for Physical AI & Humanoid Robotics Textbook
- * Features: Vibrant gradients, smooth animations, glassmorphism, premium typography
+ * Dark Luxury, Cinematic Custom Styles for Physical AI & Humanoid Robotics Textbook
+ * Features: Deep black backgrounds, metallic accents, neon yellow highlights, minimalist Japanese aesthetics
  */
 
-/* Import Google Fonts - Inter for modern, clean typography */
+/* Import Modern Fonts - Clean sans-serif for premium look */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 /* ============================================
-   DESIGN TOKENS - Light Mode
+   DESIGN TOKENS - Dark Luxury Theme
    ============================================ */
 :root {
-  /* Primary Brand Colors - Vibrant Gradient Palette */
-  --ifm-color-primary: #6366f1;
-  --ifm-color-primary-dark: #4f46e5;
-  --ifm-color-primary-darker: #4338ca;
-  --ifm-color-primary-darkest: #3730a3;
-  --ifm-color-primary-light: #818cf8;
-  --ifm-color-primary-lighter: #a5b4fc;
-  --ifm-color-primary-lightest: #c7d2fe;
+  /* Primary Brand Colors - Neon Yellow Accent */
+  --ifm-color-primary: #E6FF00;
+  --ifm-color-primary-dark: #CCE600;
+  --ifm-color-primary-darker: #B3CC00;
+  --ifm-color-primary-darkest: #99B300;
+  --ifm-color-primary-light: #F0FF33;
+  --ifm-color-primary-lighter: #F5FF66;
+  --ifm-color-primary-lightest: #FAFF99;
 
-  /* Accent Colors */
-  --accent-purple: #8b5cf6;
-  --accent-pink: #ec4899;
-  --accent-cyan: #06b6d4;
-  --accent-emerald: #10b981;
-  --accent-amber: #f59e0b;
+  /* Background Colors - Deep Black/Charcoal */
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #1A1A1A;
+  --bg-surface: #2A2A2A;
+  --bg-accent: #333333;
 
-  /* Gradient Definitions */
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --gradient-success: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-  --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  /* Text Colors - High Contrast White */
+  --text-primary: #FFFFFF;
+  --text-secondary: #F5F5F5;
+  --text-muted: #CCCCCC;
+  --text-accent: #E6FF00;
 
-  /* Typography */
+  /* Metallic Accents */
+  --metallic-silver: #C0C0C0;
+  --metallic-gold: #D4AF37;
+  --metallic-dark: #2C2C2C;
+
+  /* Gradient Definitions - Subtle Metallic Flowing */
+  --gradient-primary: linear-gradient(135deg, #E6FF00 0%, #B3CC00 100%);
+  --gradient-metallic: linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 50%, #2C2C2C 100%);
+  --gradient-flow: linear-gradient(45deg, transparent 30%, rgba(230, 255, 0, 0.03) 50%, transparent 70%);
+  --gradient-accent: linear-gradient(135deg, #E6FF00 0%, #F0FF33 100%);
+  --gradient-hero: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%);
+
+  /* Typography - Clean Modern Sans-Serif */
   --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
   --ifm-code-font-size: 95%;
-  --ifm-heading-font-weight: 700;
+  --ifm-heading-font-weight: 600;
 
-  /* Spacing & Layout */
-  --ifm-spacing-horizontal: 1.5rem;
-  --ifm-navbar-height: 4rem;
+  /* Spacing & Layout - Generous Negative Space */
+  --ifm-spacing-horizontal: 2rem;
+  --ifm-navbar-height: 4.5rem;
 
-  /* Shadows & Effects */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.4);
+  /* Shadows & Effects - Subtle and Premium */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.6), 0 8px 16px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(230, 255, 0, 0.1);
+  --shadow-metallic: 0 2px 10px rgba(192, 192, 192, 0.1);
 
-  /* Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --glass-blur: blur(10px);
+  /* Glassmorphism - Dark Luxury */
+  --glass-bg: rgba(42, 42, 42, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(20px);
 
-  /* Code Highlighting */
-  --docusaurus-highlighted-code-line-bg: rgba(102, 126, 234, 0.1);
+  /* Code Highlighting - Dark Theme */
+  --docusaurus-highlighted-code-line-bg: rgba(230, 255, 0, 0.1);
 
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 350ms ease;
+  /* Transitions - Smooth and Elegant */
+  --transition-fast: 200ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
 }
 
 /* ============================================
-   DESIGN TOKENS - Dark Mode
+   Docusaurus Dark Theme Override
    ============================================ */
 [data-theme='dark'] {
-  /* Primary Colors - Adjusted for dark mode */
-  --ifm-color-primary: #818cf8;
-  --ifm-color-primary-dark: #6366f1;
-  --ifm-color-primary-darker: #4f46e5;
-  --ifm-color-primary-darkest: #4338ca;
-  --ifm-color-primary-light: #a5b4fc;
-  --ifm-color-primary-lighter: #c7d2fe;
-  --ifm-color-primary-lightest: #e0e7ff;
-
-  /* Dark Mode Specific */
-  --ifm-background-color: #0f172a;
-  --ifm-background-surface-color: #1e293b;
-
-  /* Glassmorphism - Dark */
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
-
-  /* Shadows - Dark */
-  --shadow-glow: 0 0 30px rgba(129, 140, 248, 0.3);
-
-  /* Code Highlighting */
-  --docusaurus-highlighted-code-line-bg: rgba(129, 140, 248, 0.2);
+  /* Override Docusaurus defaults to match our luxury theme */
+  --ifm-background-color: var(--bg-primary);
+  --ifm-background-surface-color: var(--bg-surface);
+  --ifm-color-emphasis-0: var(--text-primary);
+  --ifm-color-emphasis-100: var(--text-secondary);
+  --ifm-color-emphasis-200: var(--text-muted);
+  --ifm-color-emphasis-300: var(--text-muted);
+  --ifm-color-emphasis-400: var(--text-muted);
+  --ifm-color-emphasis-500: var(--text-secondary);
+  --ifm-color-emphasis-600: var(--text-primary);
+  --ifm-color-emphasis-700: var(--text-primary);
+  --ifm-color-emphasis-800: var(--text-primary);
+  --ifm-color-emphasis-900: var(--text-primary);
 }
 
 /* ============================================
-   GLOBAL ENHANCEMENTS
+   GLOBAL ENHANCEMENTS - Dark Luxury
    ============================================ */
 
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
+  background: var(--bg-primary);
 }
 
-/* Body Enhancements */
+/* Body Enhancements - Dark Luxury */
 body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-feature-settings: 'liga' 1, 'calt' 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
 }
 
-/* Selection Styling */
+/* Background Pattern - Subtle Metallic Flow */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(230, 255, 0, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(230, 255, 0, 0.01) 0%, transparent 50%),
+    linear-gradient(45deg, transparent 49%, rgba(192, 192, 192, 0.01) 50%, transparent 51%);
+  background-size: 400px 400px, 600px 600px, 100px 100px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Selection Styling - Neon Yellow */
 ::selection {
-  background-color: var(--ifm-color-primary);
-  color: white;
+  background-color: rgba(230, 255, 0, 0.3);
+  color: var(--bg-primary);
 }
 
 /* ============================================
-   NAVBAR ENHANCEMENTS
+   NAVBAR ENHANCEMENTS - Dark Luxury
    ============================================ */
 .navbar {
+  background: var(--bg-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-metallic);
   backdrop-filter: var(--glass-blur);
-  background: var(--glass-bg);
-  border-bottom: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
+  padding: 0 var(--ifm-spacing-horizontal);
 }
 
 .navbar__title {
-  font-weight: 800;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 10px rgba(230, 255, 0, 0.1);
 }
 
 .navbar__link {
+  color: var(--text-secondary);
   font-weight: 500;
   transition: all var(--transition-fast);
+  position: relative;
+}
+
+.navbar__link::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gradient-primary);
+  transition: width var(--transition-fast);
 }
 
 .navbar__link:hover {
-  color: var(--ifm-color-primary);
+  color: var(--text-primary);
   transform: translateY(-1px);
 }
 
+.navbar__link:hover::before {
+  width: 100%;
+}
+
 /* ============================================
-   BUTTON ENHANCEMENTS
+   BUTTON ENHANCEMENTS - Dark Luxury
    ============================================ */
 .button {
-  font-weight: 600;
-  border-radius: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
   transition: all var(--transition-base);
   position: relative;
   overflow: hidden;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .button::before {
@@ -162,7 +205,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(230, 255, 0, 0.1), transparent);
   transition: left var(--transition-slow);
 }
 
@@ -171,68 +214,75 @@ body {
 }
 
 .button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow);
+  border-color: rgba(230, 255, 0, 0.3);
 }
 
 .button--primary {
   background: var(--gradient-primary);
+  color: var(--bg-primary);
   border: none;
+  box-shadow: var(--shadow-metallic);
 }
 
 .button--secondary {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  border: 2px solid var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .button--lg {
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
 }
 
 /* ============================================
-   CARD ENHANCEMENTS
+   CARD ENHANCEMENTS - Dark Luxury
    ============================================ */
 .card {
-  border-radius: 1rem;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-surface);
   backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
+  padding: 2rem;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(230, 255, 0, 0.2);
 }
 
 /* ============================================
-   CODE BLOCK ENHANCEMENTS
+   CODE BLOCK ENHANCEMENTS - Dark Luxury
    ============================================ */
 code {
-  border-radius: 0.375rem;
-  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  padding: 0.15rem 0.3rem;
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.875em;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  font-size: 0.85em;
+  background: var(--bg-accent);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 pre code {
   border: none;
   padding: 0;
+  background: transparent;
 }
 
 .prism-code {
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* ============================================
-   HEADING ENHANCEMENTS
+   HEADING ENHANCEMENTS - Dark Luxury
    ============================================ */
 h1,
 h2,
@@ -241,92 +291,107 @@ h4,
 h5,
 h6 {
   font-weight: var(--ifm-heading-font-weight);
-  letter-spacing: -0.02em;
-  color: var(--ifm-color-primary-darker);
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  line-height: 1.2;
 }
 
 h1 {
-  font-size: 3rem;
-  line-height: 1.1;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 2rem;
+  font-size: 3.5rem;
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+  text-shadow: 0 0 20px rgba(230, 255, 0, 0.1);
 }
 
 h2 {
-  font-size: 2.25rem;
-  line-height: 1.2;
-  border-bottom: 2px solid var(--ifm-color-primary-lightest);
-  padding-bottom: 0.5rem;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  border-bottom: 1px solid rgba(230, 255, 0, 0.3);
+  padding-bottom: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
   margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 /* ============================================
-   SIDEBAR ENHANCEMENTS
+   SIDEBAR ENHANCEMENTS - Dark Luxury
    ============================================ */
 .menu__link {
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   transition: all var(--transition-fast);
-  color: var(--ifm-color-primary);
-  font-weight: 500;
+  color: var(--text-secondary);
+  font-weight: 400;
+  padding: 0.5rem 1rem;
+  margin: 0.125rem 0;
 }
 
 .menu__link:hover {
-  background: var(--glass-bg);
-  transform: translateX(4px);
-  color: var(--ifm-color-primary-darker);
-}
-
-.menu__link--active {
-  background: var(--gradient-primary);
-  color: white;
-  font-weight: 600;
-}
-
-/* ============================================
-   TABLE OF CONTENTS ENHANCEMENTS
-   ============================================ */
-.table-of-contents__link {
-  transition: all var(--transition-fast);
-}
-
-.table-of-contents__link:hover {
-  color: var(--ifm-color-primary);
+  background: rgba(230, 255, 0, 0.05);
+  color: var(--text-primary);
   transform: translateX(2px);
 }
 
-.table-of-contents__link--active {
-  color: var(--ifm-color-primary);
-  font-weight: 600;
+.menu__link--active {
+  background: rgba(230, 255, 0, 0.1);
+  color: var(--text-primary);
+  font-weight: 500;
   border-left: 2px solid var(--ifm-color-primary);
 }
 
 /* ============================================
-   FOOTER ENHANCEMENTS
+   TABLE OF CONTENTS ENHANCEMENTS - Dark Luxury
    ============================================ */
-.footer {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  border-top: 1px solid var(--glass-border);
+.table-of-contents__link {
+  transition: all var(--transition-fast);
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
-.footer__title {
-  font-weight: 700;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.table-of-contents__link:hover {
+  color: var(--text-secondary);
+  transform: translateX(2px);
+}
+
+.table-of-contents__link--active {
+  color: var(--text-primary);
+  font-weight: 500;
+  border-left: 2px solid var(--ifm-color-primary);
 }
 
 /* ============================================
-   ANIMATIONS
+   FOOTER ENHANCEMENTS - Dark Luxury
+   ============================================ */
+.footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+}
+
+.footer__title {
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* ============================================
+   ANIMATIONS - Dark Luxury
    ============================================ */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
 
   to {
@@ -335,47 +400,75 @@ h2 {
   }
 }
 
-@keyframes pulse {
-
-  0%,
-  100% {
-    opacity: 1;
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
 
-  50% {
-    opacity: 0.8;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-@keyframes shimmer {
+@keyframes subtleGlow {
+
+  0%,
+  100% {
+    box-shadow: var(--shadow-md);
+  }
+
+  50% {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@keyframes metallicFlow {
   0% {
-    background-position: -1000px 0;
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
   }
 
   100% {
-    background-position: 1000px 0;
+    background-position: 0% 50%;
   }
 }
 
 /* ============================================
-   UTILITY CLASSES
+   UTILITY CLASSES - Dark Luxury
    ============================================ */
-.gradient-text {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.accent-text {
+  color: var(--ifm-color-primary);
+  text-shadow: 0 0 8px rgba(230, 255, 0, 0.3);
 }
 
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: 1rem;
+.luxury-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.luxury-card:hover {
+  border-color: rgba(230, 255, 0, 0.2);
+  box-shadow: var(--shadow-glow);
 }
 
 .animate-fade-in {
-  animation: fadeInUp 0.6s ease-out;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s ease-out;
+}
+
+.animate-subtle-glow {
+  animation: subtleGlow 3s ease-in-out infinite;
 }
 
 /* ============================================
@@ -397,19 +490,19 @@ h2 {
 }
 
 /* ============================================
-   LUNR SEARCH UI BEAUTIFICATION
+   SEARCH UI BEAUTIFICATION - Dark Luxury
    ============================================ */
 .navbar__search {
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 
 /* Search Modal / Dropdown */
 .algolia-autocomplete .ds-dropdown-menu,
 [class*='search-result-container'] {
-  background: var(--glass-bg) !important;
+  background: var(--bg-surface) !important;
   backdrop-filter: var(--glass-blur) !important;
-  border: 1px solid var(--glass-border) !important;
-  border-radius: 1.5rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 0.75rem !important;
   box-shadow: var(--shadow-xl) !important;
   overflow: hidden !important;
 }
@@ -420,47 +513,49 @@ h2 {
   background: transparent !important;
   transition: all var(--transition-base) !important;
   padding: 0.75rem 1rem !important;
-  border-bottom: 1px solid var(--glass-border) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  color: var(--text-primary) !important;
 }
 
 .algolia-autocomplete .algolia-docsearch-suggestion--content:hover,
 [class*='search-result-item']:hover {
-  background: rgba(99, 102, 241, 0.1) !important;
-  transform: translateX(5px);
+  background: rgba(230, 255, 0, 0.05) !important;
+  transform: translateX(3px);
 }
 
 /* Highlighting Search Terms */
 .algolia-docsearch-suggestion--highlight,
 .search-result-match {
   background: var(--gradient-primary) !important;
-  color: white !important;
+  color: var(--bg-primary) !important;
   padding: 0 4px !important;
-  border-radius: 4px !important;
-  font-weight: 700 !important;
+  border-radius: 3px !important;
+  font-weight: 600 !important;
 }
 
 /* Search Input Bar */
 .navbar__search-input {
-  background: var(--glass-bg) !important;
-  border: 1px solid var(--glass-border) !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 2rem !important;
   padding: 0.5rem 1.5rem !important;
-  color: var(--ifm-color-primary-darker) !important;
+  color: var(--text-primary) !important;
   transition: all var(--transition-base) !important;
-  width: 200px !important;
+  width: 220px !important;
 }
 
 .navbar__search-input:focus {
-  width: 300px !important;
-  border-color: var(--ifm-color-primary) !important;
+  width: 320px !important;
+  border-color: rgba(230, 255, 0, 0.4) !important;
   box-shadow: var(--shadow-glow) !important;
+  background: var(--bg-accent) !important;
 }
 
 /* Section Headings in Search */
 .algolia-docsearch-suggestion--category-header {
   background: var(--gradient-primary) !important;
-  color: white !important;
-  font-weight: 800 !important;
+  color: var(--bg-primary) !important;
+  font-weight: 700 !important;
   text-transform: uppercase !important;
   font-size: 0.75rem !important;
   letter-spacing: 0.1em !important;

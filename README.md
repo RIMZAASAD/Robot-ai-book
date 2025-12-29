@@ -6,6 +6,7 @@ This project integrates a Retrieval-Augmented Generation (RAG) chatbot with the 
 
 - `backend/` - FastAPI backend with RAG functionality, OpenRouter integration, and Qdrant vector database
 - `website/` - Docusaurus frontend with integrated chatbot widget
+- `frontend/` - Next.js frontend for the Full-Stack Integration feature
 - `start_project.ps1` - PowerShell script to start both services
 - `start_project.bat` - Batch script to start both services
 
@@ -29,24 +30,57 @@ These scripts will:
 - Stop any existing processes
 - Clear Docusaurus cache
 - Start the backend API server on port 8000
-- Start the frontend website on port 3000
+- Start the Docusaurus frontend website on port 3000
 - Open separate windows for each service
 
 ### Manual Start
 
 If you prefer to start services manually:
 
+**Option 1: Docusaurus Frontend (Existing Setup)**
 To run the backend API server:
 ```bash
 cd backend
 python start_api.py
 ```
 
-To run the frontend Docusaurus website:
+To run the Docusaurus frontend website:
 ```bash
 cd website
 npx docusaurus start
 ```
+
+**Option 2: Next.js Frontend (Full-Stack Integration)**
+To run the backend API server:
+```bash
+cd backend
+python start_api.py
+```
+
+To run the Next.js frontend:
+```bash
+cd frontend
+npm run dev
+```
+
+### Full-Stack Integration Frontend
+
+The project now includes a new Next.js frontend for the Full-Stack Integration feature with a dedicated chat interface. This provides an alternative to the Docusaurus-based frontend with more focused chat functionality.
+
+To run the Full-Stack Integration frontend:
+1. Start the backend server in one terminal:
+   ```bash
+   cd backend
+   python start_api.py
+   ```
+
+2. In another terminal, start the Next.js frontend:
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+3. Open your browser to `http://localhost:3000` to access the chat interface.
 
 ## Services
 
@@ -140,3 +174,28 @@ Two automation scripts are provided for Windows environments:
 For other environments, use the manual start process described above.
 
 For more detailed information about the backend, see `backend/README.md`.
+
+## Serving the Website and Root API 🔧
+
+- A convenience `api.py` is available at the project root that re-uses the backend FastAPI app, enables CORS for local development, and can serve the built Docusaurus site from `website/build/` when present.
+- To build the Docusaurus site locally, run:
+
+```bash
+cd website
+npm ci
+npm run build
+```
+
+or use the helper Python script:
+
+```bash
+python scripts/build_website.py
+```
+
+- Start the combined API (serves both API and static site) with:
+
+```bash
+uvicorn api:app --reload --host 0.0.0.0 --port 8000
+```
+
+Then open `http://localhost:8000/` to view the built site and the chatbot widget will call `/v1/chat/query` on the same host.
