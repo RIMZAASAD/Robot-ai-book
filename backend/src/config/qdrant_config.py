@@ -75,10 +75,10 @@ class QdrantConfig:
         """
         try:
             client = self.get_client()
-            health = client.health()
+            info = client.info()
             return {
                 "status": "healthy",
-                "qdrant_health": health,
+                "qdrant_info": info,
                 "collection_name": self.collection_name
             }
         except Exception as e:

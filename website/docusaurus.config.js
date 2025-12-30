@@ -17,7 +17,11 @@ const config = {
   projectName: 'Robotic-ai-Book', // Repo name (not used by Vercel)
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
   trailingSlash: false,
 
   i18n: {
@@ -127,7 +131,23 @@ const config = {
     [
       require.resolve('docusaurus-lunr-search'),
       {
-        languages: ['en']
+        languages: ['en'],
+        maxSearchResults: 10,
+        lunr: {
+          b: 0.75,
+          k1: 1.2,
+          titleBoost: 10,
+          contentBoost: 1,
+          tagsBoost: 5,
+          parentCategoriesBoost: 8,
+        },
+        hideSearchBarWithNoSearchResults: false,
+        searchResultLimits: 8,
+        searchResultContextMaxLength: 50,
+        searchInDocumentsLanguages: ['en'],
+        indexDocs: true,
+        indexBlog: true,
+        indexPages: false,
       }
     ]
   ],

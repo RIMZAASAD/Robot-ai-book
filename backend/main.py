@@ -6,6 +6,7 @@ import logging
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from contextlib import asynccontextmanager
+from fastapi.middleware.cors import CORSMiddleware
 import uuid
 
 # Import from our modular services
@@ -89,6 +90,15 @@ app = FastAPI(
     description="API for ingesting URLs, chunking text, generating embeddings, and storing in Qdrant",
     version="1.0.0",
     lifespan=lifespan
+)
+
+# Add CORS middleware to allow frontend communication
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class IngestionPipeline:
@@ -199,6 +209,14 @@ async def ingest_urls(request: IngestionRequest):
 # Include validation API routes
 from src.api.v1.validation import router as validation_router
 app.include_router(validation_router)
+
+# Include agent API routes
+from src.api.v1.agent import router as agent_router
+app.include_router(agent_router)
+
+# Include chat API routes
+from src.api.v1.chat import router as chat_router
+app.include_router(chat_router)
 
 @app.get("/health")
 async def health_check():

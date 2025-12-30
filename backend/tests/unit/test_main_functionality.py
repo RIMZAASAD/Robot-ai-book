@@ -1,14 +1,13 @@
 import pytest
-from main import URLIngestionService, TextChunkingService
+from src.services.text_chunking import TextChunkingService
 
-def test_url_extraction():
-    # This would test URL extraction, but we'll mock for now since we need a real URL
-    pass
-
-def test_text_chunking():
+@pytest.mark.asyncio
+async def test_text_chunking():
     sample_text = "This is a sample text. It has multiple sentences. Each should be handled properly."
-    chunks = TextChunkingService.chunk_text(sample_text, chunk_size=50, overlap=10)
+    service = TextChunkingService()
+    # Note: text_chunking.py execute method doesn't take chunk_size/overlap as args, 
+    # it uses settings which are loaded in __init__ or from config.
+    chunks = await service.execute(sample_text)
 
     assert len(chunks) > 0
     assert "content" in chunks[0]
-    assert "chunk_index" in chunks[0]

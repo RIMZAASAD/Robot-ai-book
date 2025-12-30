@@ -1,8 +1,8 @@
-from qdrant_client import QdrantClient
 from qdrant_client.http import models
 from typing import List, Dict, Any, Optional
-from ..config.settings import settings
 import logging
+from .base_service import BaseService
+from ..config.qdrant_config import QdrantConfig
 
 
 class VectorSearchService:
@@ -12,25 +12,23 @@ class VectorSearchService:
 
     def __init__(self):
         self.logger = logging.getLogger(self.__class__.__name__)
-        self.client = QdrantClient(
-            url=settings.qdrant_url,
-            api_key=settings.qdrant_api_key,
-            host=settings.qdrant_host,
-            port=settings.qdrant_port
-        )
-        self.collection_name = settings.collection_name
+        self.qdrant_config = QdrantConfig()
+        self.client = self.qdrant_config.get_client()
+        self.collection_name = self.qdrant_config.collection_name
 
     def search_similar_chunks(self, query_embedding: List[float], top_k: int = 5, threshold: float = 0.0) -> List[Dict[str, Any]]:
         """
         Search for similar chunks in Qdrant based on cosine similarity
         """
         try:
-            search_results = self.client.search(
+            # Use query_points instead of search for newer qdrant-client compatibility
+            query_response = self.client.query_points(
                 collection_name=self.collection_name,
-                query_vector=query_embedding,
+                query=query_embedding,
                 limit=top_k,
                 score_threshold=threshold
             )
+            search_results = query_response.points
 
             results = []
             for i, result in enumerate(search_results):

@@ -1,0 +1,350 @@
+/* Enhanced Glassmorphism and Animation Styles */
+
+/* Advanced Glassmorphism Cards */
+.glass-card {
+  background: linear-gradient(135deg, rgba(26, 31, 42, 0.6) 0%, rgba(34, 42, 56, 0.4) 100%);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(0, 242, 255, 0.15);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 32px rgba(13, 15, 20, 0.37),
+    inset 0 4px 8px rgba(0, 242, 255, 0.05),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  background: linear-gradient(135deg,
+    rgba(0, 242, 255, 0.1) 0%,
+    rgba(138, 43, 226, 0.05) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.glass-card:hover {
+  background: linear-gradient(135deg, rgba(34, 42, 56, 0.7) 0%, rgba(42, 52, 70, 0.5) 100%);
+  border-color: rgba(0, 242, 255, 0.3);
+  box-shadow:
+    0 12px 48px rgba(0, 242, 255, 0.25),
+    inset 0 6px 12px rgba(0, 242, 255, 0.08),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px) scale(1.02);
+  backdrop-filter: blur(16px) saturate(200%);
+  -webkit-backdrop-filter: blur(16px) saturate(200%);
+}
+
+/* Enhanced Glassmorphism for main containers */
+.glass-container {
+  background: linear-gradient(135deg, rgba(13, 15, 20, 0.4) 0%, rgba(22, 27, 34, 0.3) 100%);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(0, 242, 255, 0.08);
+  border-radius: 20px;
+  box-shadow:
+    0 4px 20px rgba(13, 15, 20, 0.25),
+    inset 0 2px 8px rgba(0, 242, 255, 0.03);
+  transition: all 0.3s ease;
+}
+
+.glass-container:hover {
+  background: linear-gradient(135deg, rgba(22, 27, 34, 0.5) 0%, rgba(26, 31, 42, 0.4) 100%);
+  border-color: rgba(0, 242, 255, 0.2);
+  box-shadow:
+    0 8px 32px rgba(0, 242, 255, 0.15),
+    inset 0 4px 12px rgba(0, 242, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism buttons */
+.glass-button {
+  background: linear-gradient(135deg, rgba(0, 242, 255, 0.15) 0%, rgba(138, 43, 226, 0.1) 100%);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  border: 1px solid rgba(0, 242, 255, 0.15);
+  border-radius: 12px;
+  color: #E6EDF3;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(0, 242, 255, 0.2),
+    transparent);
+  transition: left 0.5s;
+  z-index: 1;
+}
+
+.glass-button:hover {
+  background: linear-gradient(135deg, rgba(0, 242, 255, 0.25) 0%, rgba(138, 43, 226, 0.2) 100%);
+  border-color: rgba(0, 242, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 242, 255, 0.2);
+}
+
+.glass-button:hover::before {
+  left: 100%;
+}
+
+.glass-button:active {
+  transform: translateY(0);
+}
+
+/* AI Glow Effects */
+.ai-glow {
+  position: relative;
+}
+
+.ai-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ai-glow:hover::after {
+  opacity: 1;
+}
+
+.ai-glow-primary {
+  color: #00F2FF;
+}
+
+.ai-glow-primary:hover {
+  color: #33f5ff;
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+}
+
+.ai-glow-violet {
+  color: #8A2BE2;
+}
+
+.ai-glow-violet:hover {
+  color: #a55cf0;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+/* Enhanced Glassmorphism for main containers */
+.glass-container {
+  background: linear-gradient(135deg, rgba(10, 10, 15, 0.4) 0%, rgba(17, 17, 24, 0.3) 100%);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow:
+    0 4px 20px rgba(2, 12, 27, 0.25),
+    inset 0 2px 8px rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
+}
+
+.glass-container:hover {
+  background: linear-gradient(135deg, rgba(17, 17, 24, 0.5) 0%, rgba(26, 26, 37, 0.4) 100%);
+  border-color: rgba(99, 102, 241, 0.2);
+  box-shadow:
+    0 8px 32px rgba(99, 102, 241, 0.15),
+    inset 0 4px 12px rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism buttons */
+.glass-button {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: #f8fafc;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent);
+  transition: left 0.5s;
+  z-index: 1;
+}
+
+.glass-button:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(139, 92, 246, 0.2) 100%);
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
+}
+
+.glass-button:hover::before {
+  left: 100%;
+}
+
+.glass-button:active {
+  transform: translateY(0);
+}
+
+/* Animated Background Elements */
+.animated-bg-element {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(126, 87, 194, 0.15) 0%, transparent 70%);
+  animation: float 15s infinite ease-in-out;
+  z-index: -1;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(20px, -15px) scale(1.1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-15px, 20px) scale(0.9);
+    opacity: 0.2;
+  }
+  75% {
+    transform: translate(10px, 15px) scale(1.05);
+    opacity: 0.35;
+  }
+}
+
+/* Smooth entrance animations */
+.fade-in-element {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.delay-2 {
+  animation-delay: 0.2s;
+}
+
+.delay-3 {
+  animation-delay: 0.3s;
+}
+
+/* Enhanced button animations */
+.animated-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.animated-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.animated-button:hover::before {
+  left: 100%;
+}
+
+/* Hover effects for interactive elements */
+.interactive-element {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-element:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(126, 87, 194, 0.3);
+}
+
+/* Pulse animation for attention-grabbing elements */
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(126, 87, 194, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(126, 87, 194, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(126, 87, 194, 0);
+  }
+}
+
+/* Slide-in animations for content sections */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

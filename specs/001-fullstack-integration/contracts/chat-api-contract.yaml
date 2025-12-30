@@ -1,0 +1,264 @@
+openapi: 3.0.0
+info:
+  title: Chat API
+  description: API for the full-stack integrated AI textbook chatbot
+  version: 1.0.0
+  contact:
+    name: Chatbot Development Team
+
+servers:
+  - url: http://localhost:8000
+    description: Development server
+  - url: https://api.example.com
+    description: Production server
+
+paths:
+  /v1/chat/query:
+    post:
+      summary: Submit a query to the RAG agent
+      description: Submit a natural language query to the RAG agent and receive a grounded response with metadata
+      operationId: submitQuery
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Successful response from the agent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Invalid query parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorApiResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorApiResponse'
+
+  /v1/chat/health:
+    get:
+      summary: Health check for the chat service
+      description: Check if the chat service is running and healthy
+      operationId: chatHealth
+      responses:
+        '200':
+          description: Chat service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        '500':
+          description: Chat service is unhealthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorApiResponse'
+
+  /v1/chat/status:
+    get:
+      summary: Get chat status and statistics
+      description: Retrieve current status and performance metrics for the chat service
+      operationId: chatStatus
+      responses:
+        '200':
+          description: Chat status information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatStatusResponse'
+        '500':
+          description: Error retrieving chat status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorApiResponse'
+
+components:
+  schemas:
+    ChatRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: The natural language query to process
+          example: "What is artificial intelligence?"
+        include_citations:
+          type: boolean
+          description: Whether to include source citations in the response
+          default: true
+        session_id:
+          type: string
+          description: Session identifier for the interaction
+          example: "sess_1234567890"
+
+    ChatResponse:
+      type: object
+      required:
+        - response_id
+        - response
+        - citations
+        - retrieved_chunks_count
+        - processing_time_ms
+        - confidence
+        - session_id
+      properties:
+        response_id:
+          type: string
+          description: Unique identifier for this response
+          example: "resp_1234567890"
+        response:
+          type: string
+          description: The agent's response to the query
+          example: "Artificial intelligence (AI) is intelligence demonstrated by machines..."
+        citations:
+          type: array
+          description: List of sources cited in the response
+          items:
+            $ref: '#/components/schemas/Citation'
+        retrieved_chunks_count:
+          type: integer
+          description: Number of document chunks retrieved for the response
+          example: 3
+        processing_time_ms:
+          type: integer
+          description: Time taken to process the query in milliseconds
+          example: 1250
+        confidence:
+          type: number
+          description: Confidence score for the response
+          minimum: 0.0
+          maximum: 1.0
+          example: 0.92
+        session_id:
+          type: string
+          description: Session identifier for the interaction
+          example: "sess_1234567890"
+
+    Citation:
+      type: object
+      required:
+        - source_url
+        - document_id
+        - similarity_score
+      properties:
+        source_url:
+          type: string
+          description: URL of the source document
+          format: uri
+          example: "https://example.com/ai-textbook"
+        document_id:
+          type: string
+          description: ID of the document
+          example: "doc_1234567890"
+        similarity_score:
+          type: number
+          description: Similarity score of the retrieved chunk
+          minimum: 0.0
+          maximum: 1.0
+          example: 0.87
+        chunk_index:
+          type: integer
+          description: Index of the chunk within the document
+          example: 2
+        content_preview:
+          type: string
+          description: Preview of the content that was used
+          example: "Artificial intelligence (AI) is intelligence demonstrated by machines..."
+
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - service
+        - timestamp
+      properties:
+        status:
+          type: string
+          enum: [healthy, unhealthy]
+          example: "healthy"
+        service:
+          type: string
+          description: Name of the service
+          example: "Chat Service"
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of the health check
+          example: "2025-12-26T10:00:00Z"
+        dependencies:
+          type: object
+          description: Health status of dependent services
+          properties:
+            openai:
+              type: string
+              enum: [healthy, unhealthy]
+            qdrant:
+              type: string
+              enum: [healthy, unhealthy]
+            cohere:
+              type: string
+              enum: [healthy, unhealthy]
+
+    ChatStatusResponse:
+      type: object
+      required:
+        - status
+        - total_queries
+        - successful_queries
+        - avg_response_time_ms
+        - last_updated
+      properties:
+        status:
+          type: string
+          enum: [running, stopped, degraded]
+          example: "running"
+        total_queries:
+          type: integer
+          description: Total number of queries processed
+          example: 1250
+        successful_queries:
+          type: integer
+          description: Number of successful queries
+          example: 1245
+        success_rate:
+          type: number
+          description: Success rate as a percentage
+          example: 99.6
+        avg_response_time_ms:
+          type: integer
+          description: Average response time in milliseconds
+          example: 1150
+        last_updated:
+          type: string
+          format: date-time
+          description: When the status was last updated
+          example: "2025-12-26T10:00:00Z"
+
+    ErrorApiResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: "QUERY_PROCESSING_ERROR"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "Error processing the query"
+        details:
+          type: object
+          description: Additional error details (optional)
