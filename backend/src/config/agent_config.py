@@ -20,7 +20,7 @@ class AgentSettings(Settings):
 
     # Retrieval settings
     retrieval_top_k: int = Field(default=5, ge=1, le=20, description="Number of chunks to retrieve")
-    retrieval_similarity_threshold: float = Field(default=0.7, ge=0.0, le=1.0, description="Minimum similarity score")
+    retrieval_similarity_threshold: float = Field(default=0.5, ge=0.0, le=1.0, description="Minimum similarity score")
 
     # Performance settings
     agent_timeout_seconds: int = Field(default=30, ge=5, le=60, description="Timeout for agent operations")

@@ -152,21 +152,33 @@ const FloatingChatWidget: React.FC = () => {
                     key={message.id}
                     className={`fcw-message ${message.sender === 'user' ? 'fcw-user-message' : 'fcw-bot-message'}`}
                   >
-                    <div className={`fcw-message-bubble ${message.sender === 'user' ? 'fcw-user-bubble' : 'fcw-bot-bubble'}`}>
-                      {message.text}
+                    <div className={`fcw-message-avatar ${message.sender === 'user' ? 'fcw-user-avatar' : 'fcw-bot-avatar'}`}>
+                      {message.sender === 'user' ? '👤' : '🤖'}
                     </div>
-                    <div className={`fcw-message-timestamp ${message.sender === 'user' ? 'fcw-user-timestamp' : 'fcw-bot-timestamp'}`}>
-                      {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    <div className="fcw-message-content">
+                      <div className={`fcw-message-label ${message.sender === 'user' ? 'fcw-user-label' : 'fcw-bot-label'}`}>
+                        {message.sender === 'user' ? 'User' : 'Bot'}
+                      </div>
+                      <div className={`fcw-message-bubble ${message.sender === 'user' ? 'fcw-user-bubble' : 'fcw-bot-bubble'}`}>
+                        {message.text}
+                      </div>
+                      <div className={`fcw-message-timestamp ${message.sender === 'user' ? 'fcw-user-timestamp' : 'fcw-bot-timestamp'}`}>
+                        {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </div>
                     </div>
                   </div>
                 ))}
                 {isLoading && (
                   <div className="fcw-message fcw-bot-message">
-                    <div className="fcw-message-bubble fcw-bot-bubble">
-                      <div className="fcw-typing-indicator">
-                        <div className="fcw-typing-dot"></div>
-                        <div className="fcw-typing-dot"></div>
-                        <div className="fcw-typing-dot"></div>
+                    <div className="fcw-message-avatar fcw-bot-avatar">🤖</div>
+                    <div className="fcw-message-content">
+                      <div className="fcw-message-label fcw-bot-label">Bot</div>
+                      <div className="fcw-message-bubble fcw-bot-bubble">
+                        <div className="fcw-typing-indicator">
+                          <div className="fcw-typing-dot"></div>
+                          <div className="fcw-typing-dot"></div>
+                          <div className="fcw-typing-dot"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -249,12 +261,19 @@ const FloatingChatWidget: React.FC = () => {
 
         .fcw-chat-container { display: flex; flex-direction: column; height: 100%; }
         .fcw-chat-messages { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .fcw-message { display: flex; flex-direction: column; max-width: 80%; }
-        .fcw-user-message { align-self: flex-end; }
+        .fcw-message { display: flex; align-items: flex-start; gap: 8px; max-width: 80%; margin-bottom: 8px; }
+        .fcw-user-message { align-self: flex-end; flex-direction: row-reverse; }
         .fcw-bot-message { align-self: flex-start; }
-        .fcw-message-bubble { padding: 10px 14px; border-radius: 18px; font-size: 14px; line-height: 1.4; }
-        .fcw-user-bubble { background: #2563eb; color: white; border-bottom-right-radius: 4px; }
-        .fcw-bot-bubble { background: rgba(255,255,255,0.1); color: #fff; border-bottom-left-radius: 4px; }
+        .fcw-message-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; background: rgba(255,255,255,0.1); }
+        .fcw-user-avatar { background: rgba(37,99,235,0.2); }
+        .fcw-bot-avatar { background: rgba(255,255,255,0.1); }
+        .fcw-message-content { display: flex; flex-direction: column; max-width: calc(100% - 40px); }
+        .fcw-message-label { font-size: 12px; font-weight: 600; margin-bottom: 4px; color: #94a3b8; }
+        .fcw-user-label { text-align: right; }
+        .fcw-bot-label { text-align: left; }
+        .fcw-message-bubble { padding: 10px 14px; border-radius: 18px; font-size: 14px; line-height: 1.4; max-width: 100%; }
+        .fcw-user-bubble { background: #2563eb; color: white; border-bottom-right-radius: 4px; align-self: flex-end; }
+        .fcw-bot-bubble { background: rgba(255,255,255,0.1); color: #fff; border-bottom-left-radius: 4px; align-self: flex-start; }
         .fcw-message-timestamp { font-size: 11px; color: #aaa; margin-top: 4px; text-align: right; }
         .fcw-user-timestamp { text-align: right; }
         .fcw-bot-timestamp { text-align: left; }
@@ -314,12 +333,19 @@ const FloatingChatWidget: React.FC = () => {
 
         .fcw-chat-container { display: flex; flex-direction: column; height: 100%; }
         .fcw-chat-messages { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .fcw-message { display: flex; flex-direction: column; max-width: 80%; }
-        .fcw-user-message { align-self: flex-end; }
+        .fcw-message { display: flex; align-items: flex-start; gap: 8px; max-width: 80%; margin-bottom: 8px; }
+        .fcw-user-message { align-self: flex-end; flex-direction: row-reverse; }
         .fcw-bot-message { align-self: flex-start; }
-        .fcw-message-bubble { padding: 10px 14px; border-radius: 18px; font-size: 14px; line-height: 1.4; }
-        .fcw-user-bubble { background: #2563eb; color: white; border-bottom-right-radius: 4px; }
-        .fcw-bot-bubble { background: rgba(255,255,255,0.1); color: #fff; border-bottom-left-radius: 4px; }
+        .fcw-message-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; background: rgba(255,255,255,0.1); }
+        .fcw-user-avatar { background: rgba(37,99,235,0.2); }
+        .fcw-bot-avatar { background: rgba(255,255,255,0.1); }
+        .fcw-message-content { display: flex; flex-direction: column; max-width: calc(100% - 40px); }
+        .fcw-message-label { font-size: 12px; font-weight: 600; margin-bottom: 4px; color: #94a3b8; }
+        .fcw-user-label { text-align: right; }
+        .fcw-bot-label { text-align: left; }
+        .fcw-message-bubble { padding: 10px 14px; border-radius: 18px; font-size: 14px; line-height: 1.4; max-width: 100%; }
+        .fcw-user-bubble { background: #2563eb; color: white; border-bottom-right-radius: 4px; align-self: flex-end; }
+        .fcw-bot-bubble { background: rgba(255,255,255,0.1); color: #fff; border-bottom-left-radius: 4px; align-self: flex-start; }
         .fcw-message-timestamp { font-size: 11px; color: #aaa; margin-top: 4px; text-align: right; }
         .fcw-user-timestamp { text-align: right; }
         .fcw-bot-timestamp { text-align: left; }

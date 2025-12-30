@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
+import EnhancedCard from '@site/src/components/EnhancedCard';
 import styles from './styles.module.css';
 
 const FeatureList = [
@@ -38,22 +39,20 @@ const FeatureList = [
 function Feature({ Svg, title, description }) {
   return (
     <div className={clsx('col col--4', styles.featureCol)}>
-      <div className={clsx('card', styles.featureCard)}>
-        <div className={clsx('card__image', styles.featureSvgContainer)}>
-          <Svg className={styles.featureSvg} role="img" />
-        </div>
-        <div className={clsx('card__body', styles.featureBody)}>
-          <Heading as="h3" className={styles.featureTitle}>{title}</Heading>
-          <p>{description}</p>
-        </div>
-      </div>
+      <EnhancedCard
+        title={title}
+        description={description}
+        icon={<Svg className={styles.featureSvg} role="img" />}
+        variant="glass"
+        hoverEffect={true}
+      />
     </div>
   );
 }
 
 export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
+    <section className={clsx(styles.features, 'padding-vert--xl')}>
       <div className="container">
         <div className="row">
           {FeatureList.map((props, idx) => (

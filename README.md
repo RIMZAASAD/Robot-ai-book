@@ -18,6 +18,11 @@ This project implements an intelligent RAG (Retrieval-Augmented Generation) agen
 **To run the backend API server:**
 ```bash
 cd backend
+python run_server.py
+```
+Or alternatively:
+```bash
+cd backend
 uvicorn main:app --reload --port 8000
 ```
 Backend will be available at: `http://localhost:8000`
@@ -28,6 +33,22 @@ cd website
 npm run start
 ```
 Website will be available at: `http://localhost:4000`
+
+### Quick Start Commands
+
+**For Backend:**
+```bash
+# From project root
+cd backend && python run_server.py
+```
+
+**For Frontend:**
+```bash
+# From project root
+cd website && npm run start
+```
+
+**Note:** Make sure to start the backend server first before running the frontend, as the chatbot widget requires the backend API to function properly.
 
 ## Services
 
@@ -119,12 +140,17 @@ For more detailed information about the backend, see `backend/README_agent.md`.
 
 ## Running Commands Summary
 
-**Backend:**
+**Backend (Recommended):**
+```bash
+cd backend && python run_server.py
+```
+
+**Backend (Alternative):**
 ```bash
 cd backend && uvicorn main:app --reload --port 8000
 ```
 
-**Website:**
+**Frontend:**
 ```bash
 cd website && npm run start
 ```

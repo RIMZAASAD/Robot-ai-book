@@ -7,7 +7,10 @@ import LayoutProvider from '@theme/Layout/Provider';
 import Navbar from '@theme/Navbar';
 import Footer from '@theme/Footer';
 import ErrorPageContent from '@theme/ErrorPageContent';
-import ErrorBoundary from '@docusaurus/ErrorBoundary'; // <-- FIX: import ErrorBoundary from Docusaurus
+import ErrorBoundary from '@docusaurus/ErrorBoundary';
+import AIBackground from '@site/src/components/AIBackground';
+import AIImageBackground from '@site/src/components/AIImageBackground';
+import GSAPAnimations from '@site/src/components/GSAPAnimations';
 
 function Layout(props) {
   const { children, wrapperClassName, pageClassName } = props;
@@ -17,6 +20,9 @@ function Layout(props) {
 
   return (
     <LayoutProvider>
+      <AIImageBackground />
+      <AIBackground />
+      <GSAPAnimations />
       <div className={clsx('main-wrapper', wrapperClassName)}>
         <Navbar />
         <main className={clsx(pageClassName)} id="main">
@@ -28,13 +34,9 @@ function Layout(props) {
   );
 }
 
-// ✅ FIX: Use imported ErrorBoundary, not React.ErrorBoundary
 function LayoutWithErrorBoundary(props) {
   return (
-    <ErrorBoundary
-
-      fallback={(errorProps) => <ErrorPageContent {...errorProps} />}
-    >
+    <ErrorBoundary fallback={(errorProps) => <ErrorPageContent {...errorProps} />}>
       <Layout {...props} />
     </ErrorBoundary>
   );

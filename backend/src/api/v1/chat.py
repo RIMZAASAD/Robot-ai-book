@@ -8,6 +8,7 @@ that connects the frontend to the backend RAG agent.
 import time
 import logging
 from typing import Optional
+from uuid import uuid4
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from ...models.agent_models import UserQuery
@@ -60,6 +61,9 @@ async def submit_query(request: ChatRequest):
         # Calculate processing time
         processing_time_ms = int((time.time() - start_time) * 1000)
 
+        # Generate a session_id if not provided in the request
+        session_id = request.session_id or f"sess_{uuid4().hex}"
+
         # Create the chat response
         chat_response = ChatResponse(
             response=agent_response.content,
@@ -67,7 +71,7 @@ async def submit_query(request: ChatRequest):
             retrieved_chunks_count=len(agent_response.source_citations),
             processing_time_ms=processing_time_ms,
             confidence=agent_response.confidence_score,
-            session_id=request.session_id
+            session_id=session_id
         )
 
         # Convert agent citations to chat citations

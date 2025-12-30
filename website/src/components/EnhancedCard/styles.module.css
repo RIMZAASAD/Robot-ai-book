@@ -1,0 +1,146 @@
+.enhanced-card {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.enhanced-card__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.enhanced-card--gradient {
+  background: var(--gradient-hero);
+  border: 1px solid rgba(126, 87, 194, 0.2);
+}
+
+.enhanced-card--glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
+
+.enhanced-card--elevated {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(0);
+}
+
+.enhanced-card--hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(126, 87, 194, 0.3);
+}
+
+.enhanced-card--clickable {
+  cursor: pointer;
+}
+
+.enhanced-card--clickable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.enhanced-card__icon {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.enhanced-card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.enhanced-card__description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.enhanced-card__content {
+  margin-top: 1rem;
+}
+
+/* Animated gradient background effect */
+.enhanced-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(126, 87, 194, 0.05),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  z-index: 1;
+}
+
+.enhanced-card--hover:hover::before {
+  opacity: 1;
+}
+
+/* Animated border effect */
+.enhanced-card::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border-radius: calc(1rem - 2px);
+  background: linear-gradient(
+    45deg,
+    rgba(126, 87, 194, 0.1),
+    rgba(165, 148, 249, 0.1),
+    rgba(126, 87, 194, 0.1)
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  z-index: 1;
+}
+
+.enhanced-card--hover:hover::after {
+  opacity: 1;
+}
+
+/* Pulse effect for interactive cards */
+.enhanced-card--clickable::after {
+  animation: cardPulse 2s infinite;
+}
+
+.enhanced-card--clickable:hover::after {
+  animation: none;
+}
+
+@keyframes cardPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .enhanced-card {
+    padding: 1.5rem;
+  }
+
+  .enhanced-card__title {
+    font-size: 1.25rem;
+  }
+}
