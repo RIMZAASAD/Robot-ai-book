@@ -143,6 +143,55 @@
   text-shadow: 0 0 10px rgba(126, 87, 194, 0.3);
 }
 
+/* Robot Image with Animation */
+.robotImageContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem auto;
+  z-index: 1;
+  animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.robotImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation: robotFloat 6s ease-in-out infinite;
+  filter: drop-shadow(0 10px 30px rgba(0, 242, 255, 0.3));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.robotImage:hover {
+  animation: robotRotate 2s ease-in-out infinite;
+  filter: drop-shadow(0 15px 40px rgba(0, 242, 255, 0.5));
+}
+
+@keyframes robotFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes robotRotate {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) rotate(5deg) scale(1.05);
+  }
+  50% {
+    transform: translateY(-20px) rotate(0deg) scale(1.1);
+  }
+  75% {
+    transform: translateY(-10px) rotate(-5deg) scale(1.05);
+  }
+}
+
 /* Background effects */
 .heroBackground {
   position: absolute;
@@ -273,6 +322,19 @@
   .heroDescription {
     font-size: 0.95rem;
   }
+
+  .robotImageContainer {
+    max-width: 200px;
+    margin: 1rem auto;
+  }
+}
+
+/* Responsive robot image */
+@media (max-width: 768px) {
+  .robotImageContainer {
+    max-width: 250px;
+    margin: 1.5rem auto;
+  }
 }
 
 /* Accessibility */
@@ -281,11 +343,18 @@
   .heroSubtitle,
   .heroDescription,
   .heroButtons,
-  .scrollIndicator {
+  .scrollIndicator,
+  .robotImageContainer,
+  .robotImage {
     animation: none;
   }
 
   .heroBackground::before {
     animation: none;
+  }
+
+  .robotImage:hover {
+    animation: none;
+    transform: scale(1.05);
   }
 }

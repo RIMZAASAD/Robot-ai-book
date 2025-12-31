@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
 interface HeroButton {
@@ -27,6 +28,8 @@ const ModernHero: React.FC<ModernHeroProps> = ({
   className = '',
   showScrollIndicator = true
 }) => {
+  const robotImageUrl = useBaseUrl('/img/robot1.svg');
+  
   return (
     <section className={clsx(styles.hero, className)}>
       <div className={styles.heroContainer}>
@@ -54,6 +57,15 @@ const ModernHero: React.FC<ModernHeroProps> = ({
               ))}
             </div>
           )}
+        </div>
+
+        {/* Robot Image with Animation */}
+        <div className={styles.robotImageContainer}>
+          <img 
+            src={robotImageUrl} 
+            alt="Robot" 
+            className={styles.robotImage}
+          />
         </div>
 
         {showScrollIndicator && (
