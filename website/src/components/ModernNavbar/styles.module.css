@@ -70,7 +70,7 @@
   display: block;
   width: 20px;
   height: 2px;
-  background: var(--text-primary);
+  background: #ffffff;
   border-radius: 1px;
   transition: all var(--transition-fast);
   position: relative;
@@ -83,7 +83,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--text-primary);
+  background: #ffffff;
   border-radius: 1px;
   transition: all var(--transition-fast);
 }
@@ -232,6 +232,12 @@
 @media (max-width: 996px) {
   .navbarMenuButton {
     display: flex;
+  }
+
+  .navbarMenuIcon,
+  .navbarMenuIcon::before,
+  .navbarMenuIcon::after {
+    background: #ffffff;
   }
 
   .navbarMenu {

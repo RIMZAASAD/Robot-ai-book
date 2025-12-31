@@ -54,15 +54,15 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   letter-spacing: -0.01em;
 }
 
 .enhanced-card__description {
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin: 0;
 }
 
 .enhanced-card__content {
@@ -136,11 +136,44 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+  .enhancedCard,
   .enhanced-card {
     padding: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
   }
 
+  .enhancedCard__title,
   .enhanced-card__title {
     font-size: 1.25rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .enhancedCard__description,
+  .enhanced-card__description {
+    font-size: 0.9rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  .enhancedCard,
+  .enhanced-card {
+    padding: 1.25rem;
+  }
+
+  .enhancedCard__title,
+  .enhanced-card__title {
+    font-size: 1.125rem;
+  }
+
+  .enhancedCard__description,
+  .enhanced-card__description {
+    font-size: 0.875rem;
   }
 }

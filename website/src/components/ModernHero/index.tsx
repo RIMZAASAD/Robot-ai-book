@@ -28,7 +28,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({
   className = '',
   showScrollIndicator = true
 }) => {
-  const robotImageUrl = useBaseUrl('/img/robot1.svg');
+  const robotImageUrl = useBaseUrl('/img/1.gif');
   
   return (
     <section className={clsx(styles.hero, className)}>
@@ -61,9 +61,9 @@ const ModernHero: React.FC<ModernHeroProps> = ({
 
         {/* Robot Image with Animation */}
         <div className={styles.robotImageContainer}>
-          <img 
-            src={robotImageUrl} 
-            alt="Robot" 
+          <img
+            src={robotImageUrl}
+            alt="AI Robot"
             className={styles.robotImage}
           />
         </div>
