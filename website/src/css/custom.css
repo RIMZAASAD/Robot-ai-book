@@ -1141,14 +1141,12 @@ h6 > a.anchor:hover {
   .sidebar-mask.show {
     opacity: 1;
   }
-}
 
   .doc-main {
     margin-left: 0;
     padding: 1rem;
   }
 }
-
 @media (min-width: 992px) {
   .sidebar {
     position: fixed;

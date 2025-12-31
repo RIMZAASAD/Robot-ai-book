@@ -142,7 +142,23 @@ const FloatingChatWidget: React.FC = () => {
         <div className="fcw-panel-inner">
           <div className="fcw-panel-header">
             <div className="fcw-title">AI Textbook Assistant</div>
-            <button className="fcw-close" aria-label="Close chat" onClick={() => setOpen(false)}>✕</button>
+            <div className="fcw-header-buttons">
+              <button
+                className="fcw-clear-history"
+                aria-label="Clear chat history"
+                onClick={() => setMessages([
+                  {
+                    id: '1',
+                    text: 'Hello! I\'m your AI assistant for Physical AI & Humanoid Robotics. Ask me anything about the textbook content.',
+                    sender: 'bot',
+                    timestamp: new Date(),
+                  }
+                ])}
+              >
+                🗑️
+              </button>
+              <button className="fcw-close" aria-label="Close chat" onClick={() => setOpen(false)}>✕</button>
+            </div>
           </div>
           <div className="fcw-panel-body">
             <div className="fcw-chat-container">
@@ -255,8 +271,9 @@ const FloatingChatWidget: React.FC = () => {
         .fcw-panel-inner { display:flex; flex-direction:column; height:100%; width:100%; overflow:hidden; border-radius:12px; }
         .fcw-panel-header { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.03); }
         .fcw-title { font-weight:600; color:#fff; font-size:14px; }
-        .fcw-close { background:transparent; border:none; color:#ddd; font-size:18px; cursor:pointer; padding:6px; border-radius:8px; }
-        .fcw-close:hover { background: rgba(255,255,255,0.02); }
+        .fcw-header-buttons { display: flex; gap: 8px; }
+        .fcw-clear-history, .fcw-close { background:transparent; border:none; color:#ddd; font-size:18px; cursor:pointer; padding:6px; border-radius:8px; }
+        .fcw-clear-history:hover, .fcw-close:hover { background: rgba(255,255,255,0.02); }
         .fcw-panel-body { flex:1; min-height:0; background:transparent; padding:0; }
 
         .fcw-chat-container { display: flex; flex-direction: column; height: 100%; }
@@ -327,8 +344,9 @@ const FloatingChatWidget: React.FC = () => {
         .fcw-panel-inner { display:flex; flex-direction:column; height:100%; width:100%; overflow:hidden; border-radius:12px; }
         .fcw-panel-header { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.03); }
         .fcw-title { font-weight:600; color:#fff; font-size:14px; }
-        .fcw-close { background:transparent; border:none; color:#ddd; font-size:18px; cursor:pointer; padding:6px; border-radius:8px; }
-        .fcw-close:hover { background: rgba(255,255,255,0.02); }
+        .fcw-header-buttons { display: flex; gap: 8px; }
+        .fcw-clear-history, .fcw-close { background:transparent; border:none; color:#ddd; font-size:18px; cursor:pointer; padding:6px; border-radius:8px; }
+        .fcw-clear-history:hover, .fcw-close:hover { background: rgba(255,255,255,0.02); }
         .fcw-panel-body { flex:1; min-height:0; background:transparent; padding:0; }
 
         .fcw-chat-container { display: flex; flex-direction: column; height: 100%; }
