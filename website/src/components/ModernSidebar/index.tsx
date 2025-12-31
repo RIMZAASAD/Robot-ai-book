@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
@@ -17,11 +17,24 @@ interface SidebarItem {
 interface ModernSidebarProps {
   items: SidebarItem[];
   className?: string;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-const ModernSidebar: React.FC<ModernSidebarProps> = ({ items, className = '' }) => {
+const ModernSidebar: React.FC<ModernSidebarProps> = ({ items, className = '', isOpen = true, onClose }) => {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const location = useLocation();
+
+  // Close sidebar when route changes on mobile
+  useEffect(() => {
+    const handleRouteChange = () => {
+      if (window.innerWidth < 768 && onClose) {
+        onClose();
+      }
+    };
+    // Listen to location changes
+    handleRouteChange();
+  }, [location, onClose]);
 
   const toggleCategory = (label: string) => {
     const newExpanded = new Set(expandedCategories);
@@ -102,11 +115,21 @@ const ModernSidebar: React.FC<ModernSidebarProps> = ({ items, className = '' }) 
   };
 
   return (
-    <aside className={clsx(styles.sidebar, className)}>
-      <nav className={styles.sidebarNav}>
-        {items.map((item) => renderSidebarItem(item))}
-      </nav>
-    </aside>
+    <>
+      {/* Overlay for mobile */}
+      {isOpen && onClose && (
+        <div 
+          className={styles.sidebarOverlay} 
+          onClick={onClose}
+          aria-hidden="true"
+        />
+      )}
+      <aside className={clsx(styles.sidebar, className, { [styles.sidebarOpen]: isOpen })}>
+        <nav className={styles.sidebarNav}>
+          {items.map((item) => renderSidebarItem(item))}
+        </nav>
+      </aside>
+    </>
   );
 };
 

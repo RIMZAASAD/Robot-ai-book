@@ -244,19 +244,19 @@ const FloatingChatWidget: React.FC = () => {
           width: 56px;
           height: 56px;
           border-radius: 999px;
-          background: linear-gradient(135deg,#0b1220,#111827);
+          background: linear-gradient(135deg, #6366f1, #8b5cf6);
           color: #fff;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 6px 18px rgba(2,6,23,0.6);
-          border: 1px solid rgba(255,255,255,0.04);
+          box-shadow: 0 6px 24px rgba(99,102,241,0.5), 0 0 0 0 rgba(99,102,241,0.3);
+          border: 2px solid rgba(255,255,255,0.2);
           cursor: pointer;
           z-index: 9999;
-          transition: transform 200ms, opacity 200ms;
+          transition: transform 200ms, opacity 200ms, box-shadow 200ms;
           font-size: 20px;
         }
-        .fcw-button:hover { transform: translateY(-3px) scale(1.02); }
+        .fcw-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 32px rgba(99,102,241,0.6), 0 0 0 4px rgba(99,102,241,0.2); }
         .fcw-pulse { position: absolute; width: 100%; height: 100%; border-radius: 999px; box-shadow: 0 0 0 0 rgba(99,102,241,0.35); animation: pulse 2.4s infinite; opacity: 0.8; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(99,102,241,0.16); } 70% { box-shadow: 0 0 0 18px rgba(99,102,241,0); } 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); } }
         .fcw-button.hidden { opacity: 0; pointer-events: none; transform: scale(0.96); }
@@ -322,19 +322,19 @@ const FloatingChatWidget: React.FC = () => {
           width: 56px;
           height: 56px;
           border-radius: 999px;
-          background: linear-gradient(135deg,#0b1220,#111827);
+          background: linear-gradient(135deg, #6366f1, #8b5cf6);
           color: #fff;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 6px 18px rgba(2,6,23,0.6);
-          border: 1px solid rgba(255,255,255,0.04);
+          box-shadow: 0 6px 24px rgba(99,102,241,0.5), 0 0 0 0 rgba(99,102,241,0.3);
+          border: 2px solid rgba(255,255,255,0.2);
           cursor: pointer;
           z-index: 9999;
-          transition: transform 200ms, opacity 200ms;
+          transition: transform 200ms, opacity 200ms, box-shadow 200ms;
           font-size: 20px;
         }
-        .fcw-button:hover { transform: translateY(-3px) scale(1.02); }
+        .fcw-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 32px rgba(99,102,241,0.6), 0 0 0 4px rgba(99,102,241,0.2); }
         .fcw-pulse { position: absolute; width: 100%; height: 100%; border-radius: 999px; box-shadow: 0 0 0 0 rgba(99,102,241,0.35); animation: pulse 2.4s infinite; opacity: 0.8; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(99,102,241,0.16); } 70% { box-shadow: 0 0 0 18px rgba(99,102,241,0); } 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); } }
         .fcw-button.hidden { opacity: 0; pointer-events: none; transform: scale(0.96); }
