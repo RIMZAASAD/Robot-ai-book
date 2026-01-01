@@ -1,75 +1,46 @@
+/* ============================= */
+/* Features Section Base */
+/* ============================= */
 .features {
   width: 100%;
   padding: 4rem 0;
+  background-color: transparent; /* Ya jo bhi aapka background hai */
 }
 
-.featureCol {
-  margin-bottom: 2rem;
+/* Container jo content ko center mein rakhega */
+.features .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Row jo columns ko side-by-side rakhegi */
+.features .row {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap; /* Mobile ke liye zaroori hai */
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
 }
 
-/* Large screen optimizations */
-@media (min-width: 996px) {
-  .features {
-    padding: 5rem 0;
-  }
-
-  .features .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .features .row {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 2rem;
-    margin: 0;
-  }
-
-  .featureCol {
-    padding: 0 1rem;
-    margin-bottom: 0;
-    height: 100%;
-    flex: 0 1 calc(33.333% - 2rem);
-    max-width: calc(33.333% - 2rem);
-  }
-
-  /* Ensure cards have equal height */
-  .featureCol > * {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+/* ============================= */
+/* Individual Column (The Card) */
+/* ============================= */
+.featureCol {
+  flex: 1;
+  min-width: 300px; /* Card isse chota nahi hoga */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* HHH.PNG mein text left-aligned tha */
+  text-align: left;
 }
 
-/* Extra large screens */
-@media (min-width: 1400px) {
-  .features .container {
-    max-width: 1400px;
-    padding: 0 3rem;
-  }
-
-  .features .row {
-    gap: 3rem;
-    margin: 0;
-  }
-
-  .featureCol {
-    padding: 0 1.5rem;
-    flex: 0 1 calc(33.333% - 3rem);
-    max-width: calc(33.333% - 3rem);
-  }
-}
-
+/* Icon Styling */
 .featureSvg {
-  height: 100px;
   width: 100px;
-  margin-bottom: 1rem;
+  height: 100px;
+  margin-bottom: 1.5rem;
+  object-fit: contain;
   transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
   animation: pulse-glow 3s infinite ease-in-out;
   filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.3));
@@ -96,37 +67,40 @@
   }
 }
 
-/* Different animation delays for each icon */
-.featureCol--1 .featureSvg {
-  animation-delay: 0s;
+/* Text Styling */
+.featureCol h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #ffffff; /* Headings white rakhi hain */
 }
 
-.featureCol--2 .featureSvg {
-  animation-delay: 1s;
-}
-
-.featureCol--3 .featureSvg {
-  animation-delay: 2s;
-}
-
-/* Description text styling */
-.featureDescription {
-  font-size: 0.9rem;
-  margin: 1rem 0;
+.featureCol p {
+  font-size: 0.95rem;
   line-height: 1.5;
+  color: #b0b0b0; /* Light grey text jesa HHH mein tha */
+  margin: 0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 996px) {
+/* ============================= */
+/* 📱 Responsive Adjustments */
+/* ============================= */
+
+/* Tablet aur Desktop ke liye (Laptops) */
+@media (min-width: 996px) {
+  .features .row {
+    flex-wrap: nowrap; /* Desktop par 3 columns ek hi line mein rahengi */
+    gap: 4rem; /* Columns ke beech ki space */
+  }
+
   .features {
-    padding: 3rem 0;
+    padding: 6rem 0;
   }
+}
 
-  .featureCol {
-    margin-bottom: 2rem;
-  }
-
-  .featureDescription {
-    font-size: 0.85rem;
+/* Extra Large Screens */
+@media (min-width: 1400px) {
+  .features .container {
+    max-width: 1400px;
   }
 }
