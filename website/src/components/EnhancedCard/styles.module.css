@@ -6,7 +6,7 @@
   box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
   overflow: hidden;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .enhanced-card__inner {
@@ -51,18 +51,18 @@
 }
 
 .enhanced-card__title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   letter-spacing: -0.01em;
 }
 
 .enhanced-card__description {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
 }
 
 .enhanced-card__content {

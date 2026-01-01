@@ -4,6 +4,9 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
+
+
+
 interface HeroButton {
   text: string;
   to: string;
@@ -26,19 +29,19 @@ const ModernHero: React.FC<ModernHeroProps> = ({
   description,
   buttons = [],
   className = '',
-  showScrollIndicator = true
+  showScrollIndicator = true,
 }) => {
+  // ✅ GIF URL (correct)
   const robotImageUrl = useBaseUrl('/img/1.gif');
-  
+
   return (
     <section className={clsx(styles.hero, className)}>
       <div className={styles.heroContainer}>
+        {/* LEFT CONTENT */}
         <div className={styles.heroContent}>
-          <div className={styles.heroText}>
-            <h1 className={styles.heroTitle}>{title}</h1>
-            <p className={styles.heroSubtitle}>{subtitle}</p>
-            <p className={styles.heroDescription}>{description}</p>
-          </div>
+          <h1 className={styles.heroTitle}>{title}</h1>
+          <p className={styles.heroSubtitle}>{subtitle}</p>
+          <p className={styles.heroDescription}>{description}</p>
 
           {buttons.length > 0 && (
             <div className={styles.heroButtons}>
@@ -51,7 +54,11 @@ const ModernHero: React.FC<ModernHeroProps> = ({
                     styles[`heroButton${button.variant || 'primary'}`]
                   )}
                 >
-                  {button.icon && <span className={styles.heroButtonIcon}>{button.icon}</span>}
+                  {button.icon && (
+                    <span className={styles.heroButtonIcon}>
+                      {button.icon}
+                    </span>
+                  )}
                   {button.text}
                 </Link>
               ))}
@@ -59,7 +66,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({
           )}
         </div>
 
-        {/* Robot Image with Animation */}
+        {/* RIGHT GIF */}
         <div className={styles.robotImageContainer}>
           <img
             src={robotImageUrl}
@@ -70,11 +77,12 @@ const ModernHero: React.FC<ModernHeroProps> = ({
 
         {showScrollIndicator && (
           <div className={styles.scrollIndicator}>
-            <div className={styles.scrollIndicatorArrow}>↓</div>
+            <span className={styles.scrollArrow}>↓</span>
           </div>
         )}
       </div>
 
+      {/* Background */}
       <div className={styles.heroBackground} />
     </section>
   );
